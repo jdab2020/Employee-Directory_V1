@@ -3,7 +3,20 @@ import InfoCard from "../InfoCard"
 import employeesData from "../../employee.js"
 
 function Home() {
-    const employee = employeesData.map(employee =>
+    function compare(a, b) {
+        let nameA = a.name.toUpperCase();
+        let nameB = b.name.toUpperCase();
+
+        let comparison = 0;
+        if (nameA > nameB) {
+            comparison = 1;
+        } else if (nameA < nameB) {
+            comparison = -1;
+        }
+        return comparison;
+    }
+
+    const employee = employeesData.sort(compare).map(employee =>
         <InfoCard key={employee.id} employee={employee} />)
 
     return (
